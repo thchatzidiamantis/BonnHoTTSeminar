@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  24 APR 2024 20:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  24 APR 2024 20:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Theofanis/Theofanis_talk1.tex
-(c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Theofanis/Theofanis_talk1.tex
+**c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Talk1/Talk1.tex
+(c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Talk1/Talk1.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (C:\Users\Theofanis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -594,8 +594,8 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count316
 \l__pdf_internal_box=\box68
-) (Theofanis_talk1.aux)
-\openout1 = `Theofanis_talk1.aux'.
+) (Talk1.aux)
+\openout1 = `Talk1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
 LaTeX Font Info:    ... okay on input line 67.
@@ -666,9 +666,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 67.
 LaTeX Info: Redefining \pageref on input line 67.
 LaTeX Info: Redefining \nameref on input line 67.
- (Theofanis_talk1.out) (Theofanis_talk1.out)
+ (Talk1.out) (Talk1.out)
 \@outlinefile=\write5
-\openout5 = `Theofanis_talk1.out'.
+\openout5 = `Talk1.out'.
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 70.
@@ -678,12 +678,12 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 71.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 14.4pt on input line 71.
- (Theofanis_talk1.toc
+ (Talk1.toc
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 1.
 )
 \tf@toc=\write6
-\openout6 = `Theofanis_talk1.toc'.
+\openout6 = `Talk1.toc'.
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 73.
@@ -725,31 +725,25 @@ Overfull \hbox (9.89963pt too wide) in paragraph at lines 192--192
 [][][] 
  []
 
-[4] [5] [6] [7] [8] [9] (Theofanis_talk1.aux)
+[4] [5] [6] [7] [8] [9] (Talk1.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `Theofanis_talk1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Theofanis_talk1.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  FB24484836EF178DE38C6F7AAF42F0A1;1038.
+Package rerunfilecheck Info: File `Talk1.out' has not changed.
+(rerunfilecheck)             Checksum: FB24484836EF178DE38C6F7AAF42F0A1;1038.
  ) 
 Here is how much of TeX's memory you used:
- 26310 strings out of 478659
- 499120 string characters out of 2844024
- 797608 words of memory out of 3000000
- 43836 multiletter control sequences out of 15000+600000
+ 26311 strings out of 478659
+ 498832 string characters out of 2844024
+ 797560 words of memory out of 3000000
+ 43837 multiletter control sequences out of 15000+600000
  438921 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,11n,104p,3303b,1160s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,11n,104p,3289b,1160s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}<C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Theofanis_talk1.pdf (9 pages, 467043 bytes).
+Output written on Talk1.pdf (9 pages, 468913 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
+ 232 PDF objects out of 1000 (max. 8388607)
  57 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
