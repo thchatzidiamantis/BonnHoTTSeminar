@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  24 APR 2024 18:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  24 APR 2024 19:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/HoTTSeminarNotes.tex
-(c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/HoTTSeminarNotes.tex
+**c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Theofanis_talk1.tex
+(c:/Users/Theofanis/Desktop/Github/BonnHoTTSeminar/Theofanis_talk1.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (C:\Users\Theofanis\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrreprt.cls
 Document Class: scrreprt 2023/07/07 v3.41 KOMA-Script document class (report)
@@ -695,8 +695,8 @@ File: OT1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 75.
- (HoTTSeminarNotes.aux)
-\openout1 = `HoTTSeminarNotes.aux'.
+ (Theofanis_talk1.aux)
+\openout1 = `Theofanis_talk1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
 LaTeX Font Info:    ... okay on input line 75.
@@ -778,9 +778,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 75.
 LaTeX Info: Redefining \pageref on input line 75.
 LaTeX Info: Redefining \nameref on input line 75.
- (HoTTSeminarNotes.out) (HoTTSeminarNotes.out)
+ (Theofanis_talk1.out) (Theofanis_talk1.out)
 \@outlinefile=\write5
-\openout5 = `HoTTSeminarNotes.out'.
+\openout5 = `Theofanis_talk1.out'.
 
 Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           Using `bookmark' together with `hyperref' is recommended,
@@ -831,9 +831,9 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 
 
 
-{C:/Users/Theofanis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (HoTTSeminarNotes.toc)
+{C:/Users/Theofanis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (Theofanis_talk1.toc)
 \tf@toc=\write6
-\openout6 = `HoTTSeminarNotes.toc'.
+\openout6 = `Theofanis_talk1.toc'.
 
  [2
 
@@ -886,20 +886,20 @@ chapter 2.
 
 ] [13
 
-] (HoTTSeminarNotes.aux)
-Package rerunfilecheck Info: File `HoTTSeminarNotes.out' has not changed.
+] (Theofanis_talk1.aux)
+Package rerunfilecheck Info: File `Theofanis_talk1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  30214 strings out of 478659
- 589264 string characters out of 2844024
- 1030752 words of memory out of 3000000
+ 589242 string characters out of 2844024
+ 1030748 words of memory out of 3000000
  47685 multiletter control sequences out of 15000+600000
  441004 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,11n,106p,10961b,1160s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 110i,11n,106p,10960b,1160s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_edcawa.enc}<C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinBiolinumTB.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on HoTTSeminarNotes.pdf (13 pages, 520371 bytes).
+Output written on Theofanis_talk1.pdf (13 pages, 520371 bytes).
 PDF statistics:
  266 PDF objects out of 1000 (max. 8388607)
  63 named destinations out of 1000 (max. 500000)
