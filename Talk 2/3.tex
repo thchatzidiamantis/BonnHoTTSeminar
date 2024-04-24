@@ -1,0 +1,442 @@
+\section{Models of type theory}
+\subsection{A naîve interpretation}
+We want to 'interpret' every judgement by something in a category, such that \textit{the interpretation respects the logical rules and axioms}.
+
+Let $\mathcal C$ be a category.
+
+\begin{table}[h]
+    \centering 
+    \begin{tabular}{|l|l|}
+    \hline
+    Type-theoretic judgments         & Interpretation in a category $\mathcal C$ \\ \hline
+    $\Gamma \textsf{ ctx}$           & $[\![\Gamma]\!] \in \Ob\mathcal C$        \\  
+    $\Gamma \vdash A \textsf{ type}$ & A morphism with codomain $[\![\Gamma]\!]$   \\  
+    $\Gamma \vdash a: A$             & A section of  $[\![\Gamma \vdash A \textsf{ type}]\!]$  \\  
+    Definitional equalities          & Strict equalities between morphisms       \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection*{What do we mean by a sound interpretation?}
+
+With the semantics of rules given, a partial function from judgements to categorical terms (objects and morphisms) is obtained by structural induction. We say the interpretation is sound if all derivable judgements are defined and all equality judgements are validated with respect to the actual equality in the category.
+
+\subsubsection*{Structural rules}
+We want to examine what properties of the interpretation and the category are needed for it to respect the inference rules and axioms.
+
+For the first two rules about contexts, things are easy.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{}
+        \RightLabel{\scriptsize{\textsf{ctx}-EMP}}
+        \UnaryInfC{\textsf{ctx}}
+        \DisplayProof
+        & $\mathcal C$ has a terminal object 1, and $[\![]\!]:=1$
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$\Gamma\vdash A \type$}
+        \RightLabel{\scriptsize{\textsf{ctx}-EXT}}
+        \UnaryInfC{$\Gamma.A\textsf{ ctx}$}
+        \DisplayProof
+        &  % If we have $[\![\Gamma .A ]\!] \to [\![\Gamma]\!]$, then we have $[\![\Gamma .A ]\!]$.
+        Have a map $\gamma$ with codomain $\Gamma$. Let $\Gamma.A$ be the domain of $\gamma$.
+    \end{tabular}
+\end{table}
+
+\quad \newline
+\textbf{VBLE}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$\Gamma \vdash A \type $}
+        \RightLabel{\scriptsize{VBLE}}
+        \UnaryInfC{$\Gamma,x:A \vdash x:A$}
+        \DisplayProof
+        & $\begin{tikzcd}
+            {\Gamma.A} \\
+            & {\Gamma.A\times_\Gamma \Gamma.A} & {\Gamma.A} \\
+            & {\Gamma.A} & \Gamma
+            \arrow["\Delta"{description}, dashed, from=1-1, to=2-2]
+            \arrow["\id"{description}, bend left, from=1-1, to=2-3]
+            \arrow["\id"{description}, bend right, from=1-1, to=3-2]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-2, to=3-2]
+            \arrow[from=2-3, to=3-3]
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=3-2, to=3-3]
+            \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=0]
+        \end{tikzcd}$
+    \end{tabular}
+\end{table}
+
+\quad \newline
+\textbf{SUBST}
+\begin{center}
+    \AxiomC{$\Gamma \vdash a : A$}
+    \AxiomC{$\Gamma, x : A ,\Delta \vdash B \textsf{ type}$}
+    \RightLabel{\scriptsize{SUBST}}
+    \BinaryInfC{$\Gamma, \Delta[a/x]\vdash B [a/x] \textsf{ type}$}
+    \DisplayProof
+\end{center}
+
+$\itpr{\Gamma.\Delta[a/x]}$ is the pullback 
+\[\begin{tikzcd}
+	{\itpr{\Gamma.\Delta[a/x]}} & {\itpr{\Gamma.A.\Delta}} \\
+	{\itpr{\Gamma}} & {\itpr{\Gamma.A}}
+	\arrow[from=1-1, to=1-2]
+	\arrow["pr", from=1-2, to=2-2]
+	\arrow["a", from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+\end{tikzcd}\]
+
+
+And the conclusion of the rule is the dashed arrow.
+\[\begin{tikzcd}
+	{\itpr{A.\Delta[a/x].B[a/x]}} & {\itpr{\Gamma.A.\Delta.B}} \\
+	{\itpr{\Gamma.\Delta[a/x]}} & {\itpr{\Gamma.A.\Delta}} \\
+	{\itpr{\Gamma}} & {\itpr{\Gamma.A}}
+	\arrow[from=2-1, to=2-2]
+	\arrow["pr", from=2-2, to=3-2]
+	\arrow["a", from=3-1, to=3-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow["pr"', from=1-2, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=1-1, to=2-1]
+\end{tikzcd}\]
+
+For typing judgement:
+\begin{center}
+    \AxiomC{$\Gamma \vdash a : A$}
+    \AxiomC{$\Gamma, x : A ,\Delta \vdash b : B$}
+    \RightLabel{\scriptsize{SUBST}}
+    \BinaryInfC{$\Gamma, \Delta[a/x]\vdash b[a/x]: B [a/x]$}
+    \DisplayProof
+\end{center}
+
+is then the section given by the universal property of pullback
+\[\begin{tikzcd}
+	{\itpr{A.\Delta[a/x].B[a/x]}} & {\itpr{\Gamma.A.\Delta.B}} \\
+	{\itpr{\Gamma.\Delta[a/x]}} & {\itpr{\Gamma.A.\Delta}}
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[bend left, dashed, from=2-1, to=1-1]
+	\arrow["b", bend left, from=2-2, to=1-2]
+\end{tikzcd}\]
+
+The equality judement is then the strict equalities of the pullbacks or sections.
+
+The slogan is "substitution is pullback".
+
+\quad \newline
+\textbf{WKG}
+\begin{center}
+    \AxiomC{$\Gamma \vdash A \textsf{ type}$}
+    \AxiomC{$\Gamma, \Delta \vdash B \textsf{ type}$}
+    \RightLabel{\scriptsize{WKG}}
+    \BinaryInfC{$\Gamma, x:A, \Delta\vdash B \textsf{ type}$}
+    \DisplayProof
+\end{center}
+
+is interpreted as the dashed arrow of
+
+\[\begin{tikzcd}
+	{\itpr{\Gamma.A.\Delta.B}} & {\itpr{\Gamma.\Delta.B}} \\
+	{\itpr{\Gamma.A.\Delta}} & {\itpr{\Gamma.\Delta}} \\
+	{\itpr{\Gamma.A}} & {\itpr{\Gamma}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=1-1, to=2-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-1, to=3-2]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+
+The typing judgement
+\begin{center}
+    \AxiomC{$\Gamma \vdash A \textsf{ type}$}
+    \AxiomC{$\Gamma, \Delta \vdash b : B $}
+    \RightLabel{\scriptsize{WKG}}
+    \BinaryInfC{$\Gamma, x:A, \Delta\vdash b : B$}
+    \DisplayProof
+\end{center}
+is then again given by the universal property of pullback:
+\[\begin{tikzcd}
+	{\itpr{\Gamma.A.\Delta.B}} & {\itpr{\Gamma.\Delta.B}} \\
+	{\itpr{\Gamma.A.\Delta}} & {\itpr{\Gamma.\Delta}} \\
+	{\itpr{\Gamma.A}} & {\itpr{\Gamma}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[bend left, dashed, from=2-1, to=1-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-1, to=3-2]
+	\arrow["b"', bend left, from=2-2, to=1-2]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+
+\subsubsection*{Logical rules}
+
+First we notice, for $f: B\to A$, let $f^*:\mathcal C/A\to \mathcal C/B$ be the pullback along $f$. Then the composition $\Sigma_f  \dashv f^*$. What about its right adjoint? We say a category is locally cartesian closed if it has pullback, a terminal object and that every $f^*$ admits a right adjoint denoted by $\Pi_f$. As the notion implies, they are essentially how we interpret the $\Sigma$-types and $\Pi$-types.
+
+\quad \newline
+\textbf{$\Pi$-types}
+
+\begin{center}
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$ \Gamma, x : A \vdash B(x) \type$}
+        \RightLabel{$\Pi$-\scriptsize{FORM}}
+        \UnaryInfC{$ \Gamma \vdash \Pi_{x:A}B(x) \type$}
+        \DisplayProof
+        &  $\begin{tikzcd}
+            {\itpr{\Gamma.A.B}} & {\Pi_f\itpr{\Gamma.A.B}} \\
+            {\itpr{\Gamma.A}} & \itpr{\Gamma}
+            \arrow["g", from=1-1, to=2-1]
+            \arrow["{\Pi_f(g)}", dashed, from=1-2, to=2-2]
+            \arrow["f", from=2-1, to=2-2]
+        \end{tikzcd}$
+    \end{tabular}
+\end{center}
+
+The Intro rule is given by the adjointness.
+
+\quad \newline
+\textbf{$\Sigma$-types}
+
+\begin{center}
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$ \Gamma, x : A \vdash B(x) \type$}
+        \RightLabel{$\Sigma$-\scriptsize{FORM}}
+        \UnaryInfC{$ \Gamma \vdash \Sigma_{x:A}B(x) \type$}
+        \DisplayProof
+        &  $\begin{tikzcd}
+            {\itpr{\Gamma.A.B}} \\
+            {\itpr{\Gamma.A}} && {\itpr{\Gamma}}
+            \arrow["g"', from=1-1, to=2-1]
+            \arrow["{f\circ g=\Sigma_f(g)}", from=1-1, to=2-3]
+            \arrow["f"', from=2-1, to=2-3]
+        \end{tikzcd}$
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \AxiomC{$ \Gamma, x : A \vdash B(x) \type$}
+    \RightLabel{$\Sigma$-\scriptsize{FORM}}
+    \UnaryInfC{$ \Gamma, x:A, y:B(x)\vdash(x,y): \Sigma_{x:A}B(x) \type$}
+    \DisplayProof
+\end{center}
+
+\[\begin{tikzcd}
+    {\itpr{\Gamma.A.B.\Sigma}} & \bullet & {\itpr{\Gamma.\Sigma}=\itpr{\Gamma.A.B}} \\
+    {\itpr{\Gamma.A.B}} & {\itpr{\Gamma.A}} & {\itpr{\Gamma}} & {\itpr{\Gamma.A}}
+    \arrow[from=1-1, to=1-2]
+    \arrow[from=1-1, to=2-1]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+    \arrow[from=1-2, to=1-3]
+    \arrow[from=1-2, to=2-2]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+    \arrow[from=1-3, to=2-3]
+    \arrow[from=1-3, to=2-4]
+    \arrow["\Delta", bend left, dashed, from=2-1, to=1-1]
+    \arrow[from=2-1, to=2-2]
+    \arrow[from=2-2, to=2-3]
+    \arrow[from=2-4, to=2-3]
+\end{tikzcd}\]
+
+\quad \newline
+\textbf{$\mathsf{Id}$-types}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$ \Gamma \vdash A \type$}
+        \RightLabel{$\Id$-\scriptsize{FORM}}
+        \UnaryInfC{$ \Gamma, x : A, y : A \vdash \Id_A(x,y) \type$}
+        \DisplayProof
+        & $\begin{tikzcd}
+            {\Gamma.A = \Id_A} \\
+            & {\Gamma.A\times_\Gamma \Gamma.A} & {\Gamma.A} \\
+            & {\Gamma.A} & \Gamma
+            \arrow["\Delta"{description}, dashed, from=1-1, to=2-2]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-2, to=3-2]
+            \arrow[from=2-3, to=3-3]
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=3-2, to=3-3]
+            \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=0]
+        \end{tikzcd}$
+    \end{tabular}
+\end{table}
+
+In a more natural or "parameterized" form:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$\Gamma\vdash a : A \quad \Gamma\vdash b: A$}
+        \RightLabel{$\Id$-\scriptsize{FORM}}
+        \UnaryInfC{$ \Gamma \vdash \Id_A(a,b) \type$}
+        \DisplayProof
+        & $\begin{tikzcd}
+            {\Id_A(a,b)} & {\Gamma} & {\Gamma.A}
+            \arrow["{\text{equalizer}}", from=1-1, to=1-2]
+            \arrow["b"', shift right, from=1-2, to=1-3]
+            \arrow["a", shift left, from=1-2, to=1-3]
+        \end{tikzcd}$
+    \end{tabular}
+\end{table}
+
+This is obtained by using substitution twice:
+\[\begin{tikzcd}
+    {\Id_A(a,b)} &&& {\Id_A} \\
+    \Gamma & A && {A\times_\Gamma A} & A \\
+    & \Gamma && A & \Gamma
+    \arrow[from=1-1, to=1-4]
+    \arrow[color={rgb,255:red,255;green,0;blue,0}, from=1-1, to=2-1]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+    \arrow[from=1-4, to=2-4]
+    \arrow["b", from=2-1, to=2-2]
+    \arrow["{\langle a,b \rangle}"{description}, bend left, from=2-1, to=2-4]
+    \arrow["{\langle a\circ \pi,\id \rangle }", from=2-2, to=2-4]
+    \arrow[from=2-2, to=3-2]
+    \arrow[from=2-4, to=2-5]
+    \arrow[from=2-4, to=3-4]
+    \arrow["\pi"', from=2-5, to=3-5]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "a", from=3-2, to=3-4]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "\pi", from=3-4, to=3-5]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=0]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-4, to=1]
+\end{tikzcd}\]
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$ \Gamma \vdash A \type$}
+        \RightLabel{$\Id$-\scriptsize{INTRO}}
+        \UnaryInfC{$ \Gamma, x : A \vdash \refl_x: \Id_A(x,x) $}
+        \DisplayProof
+        & $\begin{tikzcd}
+            {\Delta^*\Id_A = A} & {\Id_A=A} \\
+            A & {A\times_\Gamma A}
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["\Delta"', from=1-2, to=2-2]
+            \arrow["{\refl_A}", bend left, dashed, from=2-1, to=1-1]
+            \arrow["\Delta", from=2-1, to=2-2]
+        \end{tikzcd}$
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+        \AxiomC{$ \Gamma \vdash a : A$}
+        \RightLabel{$\Id$-\scriptsize{INTRO}}
+        \UnaryInfC{$ \Gamma  \vdash \refl_a: \Id_A(a,a) $}
+        \DisplayProof
+        &  \begin{tikzcd}
+            {\Id_A(a,a)} & \Gamma & {\Gamma.A}
+            \arrow["{{\text{equalizer}}}", from=1-1, to=1-2]
+            \arrow["{\text{unique section}}", bend left, dashed, from=1-2, to=1-1]
+            \arrow["a"', shift right, from=1-2, to=1-3]
+            \arrow["a", shift left, from=1-2, to=1-3]
+        \end{tikzcd}
+    \end{tabular}
+\end{table}
+
+
+Finally, the trickiest one.
+\begin{prooftree}
+    \AxiomC{$\Gamma, x,y : A, u :\Id_A(x,y)\vdash C(x,y,u) $}
+    \AxiomC{$\Gamma, z : A \vdash d(z) : C(z,z,\refl_A(z))$}
+    \RightLabel{$\Id$-\scriptsize{ELIM}}
+    \BinaryInfC{$\Gamma, x,y :A, u : \Id_A(x,y)   \vdash  J_{z,d}(x,y,u) : C(x,y,u)$}
+\end{prooftree}
+
+First a careful analysis of the axiom on the right, which is derived by performing substitution twice:
+\begin{prooftree}
+    \AxiomC{$\Gamma, x : A \vdash \refl_A(x) : \Id_A(x,x) $}
+    \AxiomC{$\Gamma, x : A \vdash x : A$}
+    \AxiomC{$\Gamma, x, y : A, u :\Id_A(x,y)\vdash C(x,y,u) $}
+    \BinaryInfC{$\Gamma, x : A, u :\Id_A(x,x)\vdash C(x,x,u) $}
+    \BinaryInfC{$\Gamma, x : A \vdash d(x) : C(x,x,\refl_A(x))$}
+\end{prooftree}
+which is interpreted as
+
+\[\begin{tikzcd}
+	{\refl_A^*(\Delta^*C)} & {\Delta^*C} & C \\
+	A & {\Delta^*\Id_A} & {\Id_A} \\
+	& A & {A\times_\Gamma A}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{d}", bend left, from=2-1, to=1-1]
+	\arrow["{\refl_A}", from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow["J", bend left, dashed, from=2-3, to=1-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow["\Delta", from=3-2, to=3-3]
+\end{tikzcd}\]
+
+The rule is really saying: given a section $d$, we have a section $J$.
+
+This does hold simply because so many identities here:
+\[\begin{tikzcd}
+	C & C & C \\
+	A & A & A \\
+	& A & {A\times_\Gamma A}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{{d}}", bend left, from=2-1, to=1-1]
+	\arrow["{{\refl_A}=\id}", from=2-1, to=2-2]
+	\arrow["\id", from=2-2, to=2-3]
+	\arrow["\id", from=2-2, to=3-2]
+	\arrow["J", bend left, dashed, from=2-3, to=1-3]
+	\arrow["\Delta", from=2-3, to=3-3]
+	\arrow["\Delta", from=3-2, to=3-3]
+\end{tikzcd}\]
+
+Now it's easy to see $\Gamma, x : A\vdash J_{z,d}(x,x,\refl_A(x)) :  C(x,x,\refl_A(x))$ is derived from performing substitution twice. Hence the computation rules says that $J''=d$ as morphisms.
+\[\begin{tikzcd}
+	{\refl_A^*(\Delta^*C)} & {\Delta^*C} & C \\
+	A & {\Delta^*\Id_A} & {\Id_A} \\
+	& A & {A\times_\Gamma A} & {}
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{\refl_A}", from=2-1, to=2-2]
+	\arrow[from=2-2, to=3-2]
+	\arrow["\Delta", from=3-2, to=3-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["J''", dashed, bend left, from=2-1, to=1-1]
+    \arrow["d"', bend right, from=2-1, to=1-1]
+    \arrow["J'", dashed, bend left, from=2-2, to=1-2]
+	\arrow["J", bend left, from=2-3, to=1-3]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "{{\refl_A}}", from=2-1, to=2-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, from=2-2, to=2-3]
+    \arrow[""{name=2, anchor=center, inner sep=0}, "\Delta", from=3-2, to=3-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=2]
+\end{tikzcd}\]

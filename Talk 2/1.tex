@@ -1,0 +1,54 @@
+In the classical settings of model theory, logical systems are interpreted in set-based structures. It turns out to work well for first order logic, but in some more elaborate cases, traditional, set-theoretic models may lack generality or at least cause much inconvenience. That's why we introduce the idea of \textit{structure valued in a category}. For a particular logical concept, we seek properties and extra structures of a category to intepret the concepts (for example, contexts, types and terms in a type theory) such that the interpretation respects the logical rules and axioms.
+
+\iffalse
+\section{An example: theory of a monoid}
+
+The theory of a monoid contains one sort $M$, two function symbols
+\begin{enumerate}
+    \item $m : M\times M\to M$
+    \item $e : M$ (a constant)
+\end{enumerate}
+with axioms
+\begin{enumerate}
+    \item $x:M,y:M,z:M\vdash m(m(x,y),z)=m(x,m(y,z))$
+    \item $x:M\vdash m(e,x)=x$
+    \item $x:M\vdash m(x,e)=x$
+\end{enumerate}
+
+It can be intepreted in a category with finite limits and a terminal object (for example, the category of sets) in this way:
+\begin{enumerate}
+    \item Sort $\rightsquigarrow$ Object
+        \begin{enumerate}
+            \item The sort $M$ $\rightsquigarrow$ an object $[\![M]\!]$
+        \end {enumerate}
+    \item Function $\rightsquigarrow$ Morphism
+        \begin{enumerate}
+            \item $m$ $\rightsquigarrow$ $[\![m]\!] : M\times M\to M$
+            \item $e$ $\rightsquigarrow$ $[\![e]\!] : 1\to M$
+        \end {enumerate}
+    \item Axioms or rules (here, only equations are involved) $\rightsquigarrow$ identities of morphisms or commutativity of diagrams
+        \begin{enumerate}
+            \item $x:M,y:M,z:M\vdash m(m(x,y),z)=m(x,m(y,z))$ $\rightsquigarrow$ the commutativity of outer triangle in the following diagram (write $M$ for $[\![M]\!]$ for a better view)
+            \[\begin{tikzcd}
+                {(M\times M)\times M} && {M\times (M\times M)} \\
+                & {M\times M} \\
+                & M
+                \arrow["{\langle [\![m]\!],\id_{M}\rangle}"{description}, from=1-1, to=2-2]
+                \arrow["{[\![m]\!]}", from=2-2, to=3-2]
+                \arrow["{\langle \id_{M]},[\![m]\!]\rangle}"{description}, from=1-3, to=2-2]
+                \arrow["\cong", from=1-1, to=1-3]
+                \arrow[from=1-1, to=3-2]
+                \arrow[from=1-3, to=3-2]
+            \end{tikzcd}\]
+            \item $x:M\vdash m(e,x)=x$ $\rightsquigarrow$ the commutativity of  \[\begin{tikzcd}
+                {1\times M} & M \\
+                {M\times M} & M
+                \arrow["{\langle [\![e]\!],\id_M \rangle}"{description}, from=1-1, to=2-1]
+                \arrow["{[\![m]\!]}", from=2-1, to=2-2]
+                \arrow["{\id_M}"{description}, from=1-2, to=2-2]
+                \arrow["\cong", from=1-1, to=1-2]
+            \end{tikzcd}\]
+        \end {enumerate}
+\end{enumerate}
+
+\fi

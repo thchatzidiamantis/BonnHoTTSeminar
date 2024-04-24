@@ -1,0 +1,21 @@
+\section{Formal type theory}
+
+Since we need to interpret the rules and axioms of type theory, we need a more careful treatment of the formal system of type theory.
+
+By a context, we mean a finite (possibly empty) list of distinct variables with their respective typings:
+\[x_1:A_1,...,x_n:A_n\]
+
+Contexts are often denoted by $\Gamma$, $\Delta$, etc.
+
+We have five forms of judgments:
+\begin{enumerate}
+    \item $\Gamma \textsf{ ctx}$
+    \item $\Gamma \vdash A \textsf{ type}$
+    \item $\Gamma \vdash a : A$
+    \item $\Gamma \vdash A \equiv B  \textsf{ type}$
+    \item $\Gamma \vdash a \equiv b : A$
+\end{enumerate}
+
+The derivibility of those judements are defined inductively by the \textit{inference rules} of type theory.
+
+Let $B$ be a term / type / context, write $B[a/x]$ for the \textit{substitution} of a term $a$ for free occurrences of the variable $x$ in the term $B$. Moreover, let $B[a_1,...,a_n/x_1,...,x_n]$ denote the simultaneous substitution.
