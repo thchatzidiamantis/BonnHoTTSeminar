@@ -1,0 +1,346 @@
+\documentclass{scrreprt}
+
+\usepackage{amsmath,amsthm,latexsym,amssymb}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+\usepackage{libertine}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+
+
+\usepackage[all,arc]{xy}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=teal, urlcolor=teal, citecolor=purple}
+
+\newcommand{\textbi}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\N}{\mathscr{N}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\cS}{\mathscr{S}}
+\newcommand{\X}{\mathscr{X}}
+
+\newcommand{\Top}{\mathscr{T}\mathrm{op}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Obj}{\mathrm{Obj}}
+\newcommand{\Ho}{\mathrm{Ho}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\Set}{\cS\mathrm{et}}
+\newcommand{\sS}{s\cS}
+\newcommand{\Fun}{\mathrm{Fun}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Map}{\mathrm{Map}}
+\newcommand{\Nat}{\mathrm{Nat}}
+\newcommand{\Sq}{\mathrm{Sq}}
+\newcommand{\colim}{\mathrm{colim}}
+
+\newcommand{\tProp}{\mathsf{Prop}}
+\newcommand{\tSet}{\mathsf{Set}}
+\newcommand{\tType}{\mathsf{Type}}
+
+
+\newcommand{\chapterauthor}[1]{%
+  {\parindent0pt\vspace*{-10pt}%
+  \linespread{1.1}\fontsize{16}{12}\selectfont#1%
+  \par\nobreak\vspace*{30pt}}
+}
+
+
+\swapnumbers
+\newtheorem{defin}[subsection]{Definition}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{cor}[subsection]{Corollary}
+\newtheorem{lem}[subsection]{Lemma}
+\newtheorem{thm}[subsection]{Theorem}
+\newtheorem{rem}[subsection]{Remark}
+\newtheorem{ex}[subsection]{Example}
+\newtheorem{nota}[subsection]{Notation}
+
+
+\usepackage[textwidth=2.65cm,textsize=scriptsize,color=orange!40,linecolor=green!40!black,colorinlistoftodos]{todonotes} 
+
+\title{Thesis Seminar on Homotopy Type Theory and Formalization}
+\author{}
+\date{April 2024}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction to Homotopy Type Theory: Syntax and Axioms}
+\chapterauthor{Theofanis Chatzidiamantis-Christoforidis}
+
+This is the first in a series of talks aiming to motivate and introduce the ideas behind homotopy type theory (HoTT) and higher category theory, and finally to bring the two together using the extension of HoTT commonly called simplicial type theory. We assume some prior exposure to formalized mathematics and a basic understanding of type theory (the intuition one gains from using Lean should be enough), as well as basic category theory.
+
+\section{A Vague Introduction to (a) Type Theory}
+
+\subsection*{Motivation: Two Proof Assistants}
+
+For a proof checking system to work, we need a system of type theory and an interpretation of mathematical statements as types (given by extending the Curry-Howard correspondence). Then, a true statement is interpreted as a type that has a term. To prove something, we need to exhibit such a term in the corresponding type. 
+\par Let us compare two very popular proof assistants: \textit{Coq} and \textit{Lean} (the latter of which I assume everybody knows how to use). We will now see the ways in which they are similar, and later how they differ. Both are built on a formal system of type theory called the \textit{Calculus of Inductive Constructions} (CIC), of which we now give a brief outline. Then, we modify this system, adding the types and axioms that we need for HoTT.
+
+\begin{nota}
+    We write $x:A$ for the expression ``x is of type A", or, equivalently, ``x is a term of A".
+\end{nota}
+All terms have a type. Every type has a type, called a \textbi{sort}. We require an infinite hierarchy of sorts, consisting of:
+\begin{itemize}
+    \item $\tProp$, the type of \textit{propositions}. 
+    \item $\tSet$, the type of \textit{(small) sets} (who would've thought).
+    \item A sort $\tType_i$ for every $i\in\bN$. 
+\end{itemize}
+
+This is a well-founded hierarchy with $\tProp$ and $\tSet$ at the base of the hierarchy. Both have type $\tType_1$. 
+\begin{rem}
+    Such an infinite hierarchy is required to avoid Russell-type paradoxes: As in set theory, there cannot be a ``type of all types".
+\end{rem}
+
+In HoTT, we present things in a different way, having infinite \textit{universes} with propositions and sets defined by specific properties.
+
+\begin{rem}
+    For these talks, we diverge from the notation used by functional programming languages and we do not follow the CIC presentation. Instead, we use a more ``natural" system, as outlined in \cite{UF13} and \cite{Rij22}. The exact details of the formal CIC system can be found in the \href{https://coq.inria.fr/doc/v8.9/refman/language/cic.html#}{Coq} and \href{https://lean-lang.org/theorem_proving_in_lean4/dependent_type_theory.html}{Lean} documentation. In particular, there is a precise exposition of the additional \href{https://lean-lang.org/theorem_proving_in_lean4/axioms_and_computation.html}{axioms} one can use to work analogously to classical logic and set theory. 
+\end{rem}
+
+\todo[inline]{$\lambda$ notation for functions. Maybe an example of an inductive type.}
+
+\subsection*{The Syntax}
+
+To specify a system of type theory, we need a collection of \textbi{structural rules} and \textbi{type-forming rules}. The type theory that is of interest to us is \textbi{Martin-L\"of dependent type theory} (MLTT). For a complete formal presentation of MLTT (and HoTT), we point to \cite[Appendix A]{UF13}. The \href{https://ncatlab.org/nlab/show/type+theory}{nLab article} on type theory has a quick informal introduction to the general syntax and categorical semantics of type theories and an extensive list of sources to learn more.
+
+\begin{defin}
+\begin{itemize}
+    \item[]
+    \item A \textbi{context} is a finite list of declarations of the form $x : A$. We add an empty context $()$ with no declarations.
+    \item A \textbi{judgement} is of the form $\Gamma \vdash \mathcal{J}$, where $\Gamma$ is a context. In MLTT, the possible forms of judgements are
+    \begin{align*}
+        \Gamma \; \mathsf{ctx} & & \Gamma \vdash A\; \mathrm{type} & & \Gamma \vdash a : A & & \Gamma \vdash A \equiv A' \; \mathrm{type} & & \Gamma \vdash a \equiv a' : A 
+    \end{align*}
+\end{itemize}   
+\end{defin}
+
+Note the symbol ``$\equiv$" : This expresses the notion of \textbi{judgemental equality}, which will be the formal specification of \textit{equality by definition}. We will revisit this later, as we will also present a different notion of equality, having inhabited identity types. Whether or not these coincide is the difference between \textit{extensional} and \textit{intensional} type theories, the former of which is both inconsistent with the axioms of HoTT and also has problems when it comes to type-checking (\textcolor{magenta}{ref?}). 
+
+\begin{nota}
+    To specify the allowed steps in type-theoretic constructions and proofs, we express our \textbi{inference rules} in the form $$\frac{\mathcal{J}_1 \ \dots \ \mathcal{J}_n}{\mathcal{C}}$$ where all the $\mathcal{J}_i$ and $\mathcal{C}$ are judgements.
+\end{nota}
+
+%Again, it is not in anyone's best interest to specify all of the basic inference rules. Instead, we give a short overview and some examples. These first rules are called the \textit{structural rules} of MLTT. 
+%These fall into one of five categories: \todo{add descriptions and examples. What about the generic elements rule in Rijke's book?}
+%\begin{enumerate} 
+%    \item Reflexivity, transitivity and symmetry of judgemental equality.
+%    \item Substitution: 
+%    \item Weakening:
+%    \item Variable conversion:
+%    \item 
+%\end{enumerate} 
+
+We also assume a hierarchy of universes $\ \mathcal{U}_i, \ i\in\bN$, with the extra assumption that the universes are \textit{cumulative}, i.e., a type in a universe is also in the next one. In formal terms, we have two rules:
+\begin{align*}
+    \frac{\Gamma \ \text{ctx}}{\Gamma \vdash\mathcal{U}_i : \mathcal{U}_{i+1}} && \frac{\Gamma \vdash A:\mathcal{U}_i}{\Gamma \vdash A:\mathcal{U}_{i+1}}
+\end{align*}
+In the full presentation, it is ensured that every type belongs to a universe.
+
+\todo[inline]{Type formation, introduction, elimination and computation rules. Empty, product and coproduct and non-dependent function types. Compare to category theory. Talk about substitution!}
+
+\subsection*{Translating logic, Part 1}
+\todo[inline]{Short section of correspondence of product/coproduct/function types and logical operators. Predicates as $A\to \mathcal{U}$}
+
+\section{Type Families, Dependent and Identity Types}
+Using that foundation, we now outline the rest of the structure of dependent type theory. We will see how, in some cases, can view these new dependent types as analogues of classical logical operators, and how the introduction of identity types provides additional ``higher" structure, which we can interpret homotopically. We keep following \cite[Appendix A.2]{UF13} with some extra insights from \cite[I.1-I.7]{Rij22} (and \href{https://ncatlab.org/nlab/show/Martin-L%C3%B6f+dependent+type+theory#judgments_and_contexts_2}{here} is the obligatory link to the relevant \href{https://ncatlab.org/nlab/show/Martin-L%C3%B6f+dependent+type+theory#judgments_and_contexts_2}{nLab} article).
+\par Fix a universe $\mathcal{U}$.
+
+\begin{defin}
+    A \textbi{family} of types over $A:\mathcal{U}$ in context $\Gamma$ is of the form $$\Gamma, x:A \vdash B(x):\mathcal{U}$$
+\end{defin}
+
+\begin{itemize}
+     \item[\textbf{$\prod$-Types}] or \textbi{dependent function types}. Intuitively, a term of the type $ \prod_{x:A}B(x)$ assigns to every term $x:A$ a term of $B(x)$. We have a formation rule 
+       $$\frac{\Gamma \vdash A : \mathcal{U} \quad \Gamma, x:A \vdash B(x) : \mathcal{U}}{\Gamma \vdash \prod_{x:A} B(x) : \mathcal{U}}$$
+    and an introduction rule
+       $$ \frac{\Gamma, x:A \vdash b(x):B(x)}{\Gamma \vdash \lambda(x:A).b(x):\prod_{x:A} B(x)}$$
+    stating formally what we just described. 
+    We additionally have elimination, computation, and uniqueness rules, expressing that evaluating a function at a certain term works as expected and respects judgemental equality.
+    
+    \begin{rem}
+        Consider the case where the family is constant, i.e., a type $B$. Then, we obtain the ordinary \textit{function type} $$A\to B:\equiv \prod_{x:A}B$$ In our formal system, this will be the definition of the function type. In other presentations we can also define this type without using families, so we can instead take the definition of a type family to be a term of type $A\to \mathcal{U}$.
+    \end{rem}
+
+    \begin{rem}
+    Using the (ordinary) function type, we can express functions with multiple parameters: A function $f:A\times B\to C$ corresponds precisely to a function $f: A\to (B\to C)$. This operation is called \textbi{currying} and is the preferred way of denoting such types. 
+\end{rem}
+
+\begin{nota}
+    We usually skip the parenthesis on the right when there is no ambiguity, writing $A\to B\to C$ for $A\to (B\to C)$.
+\end{nota}
+    
+    \item[\textbf{$\sum$-Types}] or \textbi{dependent pair types}. The ``classical equivalent" of these would be an indexed disjoint union. Let's take a look at the details: The formation rule works as with the dependent function type.
+    Again, we highlight the introduction rule
+    $$\frac{\Gamma, x:A \vdash B(x) : \mathcal{U} \quad \Gamma \vdash a:A \quad \Gamma \vdash b:B[a/x]}{\Gamma \vdash (a, b):\sum_{x:A} B(x)}$$
+    Note the difference from the rule of the $\prod$-type: Here, we only require some term $a:A$ to ``produce" a term of $B$, and, if this is the case, we get a pair in the $\sum$-type (some logic-minded people may now see where this is going).
+    
+    \begin{rem}
+        As with the $\prod$-type and the ordinary function type, we have a case that falls out of the definition of $\sum$-types: If the family $B$ is constant, then we define the \textbi{product} $$A\times B:\equiv \sum_{x:A}B$$
+        We can also define projection maps \begin{align*}
+            \mathsf{pr_1}: A\times B\to A &&\text{and}&& \mathsf{pr_2}: A\times B\to B \\
+            \mathsf{pr_1}(a,b):=a && && \mathsf{pr_2}(a,b):=b
+        \end{align*}
+    \end{rem}
+
+    \begin{rem}
+        As the case of the product might hint at, we can define $\sum$-types as inductive types satisfying (...) \todo{outline the rules.} In fact, the projection maps for the product are special cases of projection maps for the $\sum$-type ($ \mathsf{pr_2}$ is quite complicated to define). This type of property is what we use in practice, and it will become especially important in the case of identity types.
+    \end{rem}
+    
+\end{itemize}
+
+\subsection*{Translating logic, Part 2}
+\begin{itemize}
+    \item[\textbf{For $\prod$-Types}.] Since an inhabited function type can be seen as a logical implication, we can revisit our explanation of the introduction rule and interpret it as such: For every $x:A$, we have a witness of $B(x).$ We have thus found our analogue of the statement: \textit{for all $x: A, B(x)$ holds}.    
+    \item[\textbf{For $\sum$-Types}.] Now do the same, this time with at least one term of $A$ such that there is a term in $B(x)$. We have the analogue of: \textit{there exists some $x: A$ for which $B(x)$ holds}. Note that the $\sum$-type is the collection of all such pairs of terms $x$ and proofs of $B(x)$.  
+\end{itemize} 
+
+\begin{rem}
+    This correspondence here is only motivational! In reality, when making precise analogues of logical statements, we will use the \textit{propositional truncation}, an operation that converts general types into analogues of the classical logical propositions, which we introduce later. 
+\end{rem}
+
+\subsection*{Identity Types and Path Induction}
+It is now time to look at identifications \textit{internal} to our type theory. The key conceptual difference is that an identity type contains \textit{all the possible identifications} of two terms of a given type (there can be more than one!). For two terms $x,y:A$ the identity type $x=_Ay$ is defined inductively:
+We have a formation rule 
+$$\frac{\Gamma \vdash A : \mathcal{U} \quad \Gamma \vdash x:A \quad \Gamma \vdash y:A}{\Gamma \vdash x =_A y : \mathcal{U}}$$
+
+For the introduction rule, there is only one term we can construct by default in the identity type: The term $\mathsf{refl}_x:x=_Ax$ corresponding to a trivial identification of a term with itself. Formally, the rule is
+$$\frac{\Gamma \vdash A : \mathcal{U} \quad \Gamma \vdash x:A}{\Gamma \vdash \mathsf{refl}_x:x=_Ax}$$
+
+If one checks the rest of the formal presentation, the elimination and computation rules are quite complicated. However, they are outlining a powerful: \textbi{path induction}. 
+\par The statement is as follows \cite[1.12.1]{UF13}: 
+\newline Assume we have a family $$\Phi: \prod_{x:A}\prod_{y:A}(x=_Ay)\to\mathcal{U}$$ 
+and a (dependent) function $$\varphi: \prod_{x:A}\Phi(x,x,\mathsf{refl_x})$$
+Then there is a function $$f: \prod_{x:A}\prod_{y:A}\prod_{(p:x=_Ay)}\Phi(x,y,p)$$
+that ``extends" $\varphi$: $$f(x,x,\mathsf{refl}_x)=\varphi(x)$$
+
+In terms of proof tactics, this is saying: If I want to prove something for all $x,y:A$ and all paths between them, it is enough to consider the case in which both elements are $x$ and the path is $\mathsf{refl}_x$!
+
+\par \textbf{Warning:} This is \textit{not} saying that these are the only terms in the identity type. In fact, identity types can be complicated enough to allow us to reason about homotopy theory in HoTT. Of course, it is not immediately clear why we would actually want these types to have that kind of structure. This is the first point where the classical and the homotopical perspective diverge, and so do our two proof assistants from the start. 
+
+\section{Uniqueness of Identity and Homotopy Type Theory}
+
+\todo[inline]{I don't know where to put this in the notes: A proposition is a type $A$ with a term of type $$\mathsf{isProp}(A):\equiv\prod_{x,y:A}x=_Ay$$ i.e., $A$ is empty or contractible.}
+
+\begin{defin}
+    A \textbi{set} is a type $A$ with a term in the following proposition:
+    $$\mathsf{isSet}(A):\equiv\prod_{(x,y:A)}\prod_{(p,q:x=_Ay)}(p=q)$$
+\end{defin}
+
+A set is then viewed as a type for which all the higher structure of the identity types has been, in some sense, collapsed. Nothing is stopping us from adding this as an axiom for our entire system of type theory. We say that such a type theory has \textbi{uniqueness of identity proofs} (UIP). 
+
+\begin{ex}
+    Coq does not assume UIP. Lean 4 does.
+\end{ex}
+
+The advantage of UIP is that we can do mathematics more or less exactly like we are used to in the classical, set-theoretic foundations. However, there are reasons one might want to reject it. When working, for example, in category theory, we have the two different notions of an \textit{isomorphism} and an \textit{equivalence} of categories. Although the latter is weaker, it preserves the fundamental properties we are usually interested in. In this case, remembering the identification of two categories via an equivalence can allow us to exploit this. 
+\par We will now explore a related, but different reason: Under a certain interpretation, the structure of identity types provides a system of foundations that allow us to naturally work in a homotopy-invariant setting. Combined with Voevodsky's univalence axiom, HoTT becomes the type-theoretic equivalent of going from manually adding homotopical structure to topological spaces to working with $\infty$-categories and Kan complexes, with the homotopical information requiring no additional work. 
+
+\subsection*{The Minimal Amount of Topology}
+We now present a topological interpretation (and some facts) to justify what we just said. Consider a term $p:x=_Ay$ in some identity type. This first proposition states that we can really think of such terms as \textit{paths}, in the sense that they satisfy the same fundamental properties that paths do (\textit{up to homotopy}) in topological spaces. 
+
+\begin{prop}
+    Let $A$ be a type. There is a concatenation operator of type
+    $$\prod_{x,y,z:A}(x=_Ay\to (y=_Az \to x=_Az))$$
+    and an inverse operator of type 
+    $$\prod_{x,y:A}(x=_Ay\to y=_Ax)$$
+    satisfying the relevant associativity, unit and inverse laws, with the unit being $\mathsf{refl}_x$.
+\end{prop}
+
+Let us look at the type $$\sum_{x,y:A}(x=_Ay)$$
+This is then analogous to the concept of \textbi{free path space}, i.e. the path space of a topological space not bound by any endpoints. In such a space, any path is homotopic to the constant path at one of its endpoints. There is also an analogous principle of \textbi{based path induction}, which would work in types corresponding to the behavior of the \textit{based path space}.  
+
+\par We now shift our focus to functions. The next proposition states that there is a functorial way to apply a function to a path.
+\begin{prop}
+    Let $f:A\to B$, $g:B\to C$ be functions. there is an operation (\textbi{action on paths})
+    $$\mathsf{ap}_f: \prod_{x,y:A}(x=_Ay\to f(x)=_Bf(y))$$
+    together with operations
+    $$\mathsf{ap\text{-}id}_A:\prod_{x,y:A}\prod_{(p:x=_Ay)}p=_{(x=_Ay)}\mathsf{ap}_{\mathsf{id}_A}(p)$$
+    $$\mathsf{ap\text{-}comp}(f,g):\prod_{x,y:A}\prod_{(p:x=_Ay)}\mathsf{ap}_{g}(\mathsf{ap}_{f}(p))=_{(g\circ f(x)=_Cg\circ f(y))}\mathsf{ap}_{g\circ f}(p))$$
+\end{prop}
+
+Once again, the key here is to iteratively define the operators, each time in the case where the relevant path is $\mathsf{refl}$, and use path induction.
+
+\par We can have an analogous operator in the dependent function type, for which we need:
+\begin{prop}[Transport.]
+    Let $A$ be a type and $B$ a type family over $A$. There is an operation 
+    $$\mathsf{tr}_B:\prod_{x,y:A}(x=_Ay\to (B(x)\to B(y))$$
+\end{prop}
+
+\begin{defin}
+    \begin{itemize}
+        \item[] 
+        \item Let $f,g:A\to B$ be two functions. A \textbi{homotopy} between $f$ and $g$ is a dependent function of type $$(f\sim g):\equiv\prod_{x:A}(f(x)=g(x))$$
+        \item A function $f:A\to B$ is an \textbi{equivalence} if there is an element in the type (actually proposition!)
+        $$\mathsf{isequiv}(f):\equiv (\sum_{g:B\to A}(f\circ g\sim \mathsf{id}_B))\times(\sum_{h:B\to A}(h\circ f\sim \mathsf{id}_B))$$
+    \end{itemize}
+\end{defin}
+
+\begin{defin}
+    Let $f:A\to B$ be a function and $b:B$. We define the \textbi{fiber} of $f$ at $b$ to be the type $$\mathsf{fib}_f(b):\equiv \sum_{x:A}(f(x)=b)$$
+\end{defin}
+
+\begin{thm}
+    A function $f:A\to B$ is an equivalence if and only if it has contractible fibers, i.e., if there is an element of the type $$\prod_{b:B}\mathsf{isContr}(\mathsf{fib}_f(b))$$
+\end{thm}
+
+\subsection*{The Univalence Axiom}
+
+The motivation here comes from another observation about how we reason in some areas of classical mathematics: It is common to identify two isomorphic (or homotopy equivalent) objects, often without being rigorous about it. In the process of formalization, this is just false. It is, however, possible to codify this as an axiom using the structure we have built so far. 
+
+\begin{rem}
+    Let $\mathcal{U}$ be a universe. For any two types $A,B:\mathcal{U}$ we can define a map $$\mathsf{idtoequiv}: (A=_{\mathcal{U}}B)\to (A\simeq_{\mathcal{U}}B)$$ given by sending $\mathsf{refl}_A$ to $\mathsf{id}_A$ and applying transport and path induction.
+\end{rem}
+
+\begin{defin}
+    A universe $\mathcal{U}$ is \textbi{univalent} if, for all types $A,B:\mathcal{U}$, the function $\mathsf{idtoequiv}$ is an equivalence.
+\end{defin}
+
+\begin{thm}
+    Univalence implies function extensionality and propositional extensionality.
+\end{thm}    \todo[inline]{In the extended notes: talk about the universal properties implied by funext.}
+
+One very powerful result implied by univalence is the following type-theoretic analogue of the Grothendieck construction:
+
+\begin{thm}
+    For any type $A:\mathcal{U}$ where $\mathcal{U}$ is a univalent universe, the map
+    \begin{align*}
+        (\sum_{X:\mathcal{U}}(X\to A)) & \to (A\to \mathcal{U}) \\
+        (X,f) &\mapsto \mathsf{fib}_f 
+    \end{align*}
+    is an equivalence. 
+\end{thm}
+
+Recall that we can see $A\to \mathcal{U}$ as the type of type families indexed by $A$. Then this result is saying that the full homotopical structure of such families is encoded in the type of maps into $A$.
+
+\subsection*{A Glimpse Into Higher Inductive Types}
+The idea behind higher inductive types is that we use the structure of identity types and manually add our own paths with some specified behavior to define new types with homotopically interesting properties. In topology, this reminds us of the way we form CW-complexes. Recall that, by CW-approximation, these are all we need when reasoning about homotopy types up to weak equivalence.
+\todo[inline]{Circle.}
+
+\section{Truncations and Logical Aspects}
+\todo[inline]{Propositions, sets, ``universal property" of the propositional truncation. Infinite level of truncations, related to homotopy theory.  Note that types like isSet and isEquiv are propositions. AC and LEM related to truncation levels.  Univalence contradicts UIP.}
+\todo[inline]{UP of prop. truncation: $A$ type, $f:A\to P$, $P$ proposition s.t. for any other proposition $Q$ the precomposition map (w/$f$) is an equivalence of the function types.}
+
+\chapter{Categorical Semantics of Type Theory}
+\chapterauthor{Kunhong Du}
+
+
+\begin{thebibliography}{}
+    \bibitem[UF13]{UF13}{The Univalent Foundations Program, \href{https://hott.github.io/book/hott-online-13-g2e736d1.pdf}{Homotopy type theory: Univalent foundations of mathematics}.  Institute for Advanced Study, 2013.}
+    \bibitem[Rij22]{Rij22}{Egbert Rijke, \href{https://arxiv.org/abs/2212.11082}{Introduction to Homotopy Type Theory}.  arXiv:2212.11082.}
+\end{thebibliography}
+
+\end{document}
