@@ -1,4 +1,4 @@
-\documentclass{scrreprt}
+\documentclass{scrartcl}
 
 \usepackage{amsmath,amsthm,latexsym,amssymb}
 \usepackage{mathtools}
@@ -47,14 +47,6 @@
 \newcommand{\tSet}{\mathsf{Set}}
 \newcommand{\tType}{\mathsf{Type}}
 
-
-\newcommand{\chapterauthor}[1]{%
-  {\parindent0pt\vspace*{-10pt}%
-  \linespread{1.1}\fontsize{16}{12}\selectfont#1%
-  \par\nobreak\vspace*{30pt}}
-}
-
-
 \swapnumbers
 \newtheorem{defin}[subsection]{Definition}
 \newtheorem{prop}[subsection]{Proposition}
@@ -68,8 +60,8 @@
 
 \usepackage[textwidth=2.65cm,textsize=scriptsize,color=orange!40,linecolor=green!40!black,colorinlistoftodos]{todonotes} 
 
-\title{Thesis Seminar on Homotopy Type Theory and Formalization}
-\author{}
+\title{A Brief Introduction to Homotopy Type Theory: Syntax and Axioms}
+\author{Theofanis Chatzidiamantis-Christoforidis}
 \date{April 2024}
 
 \begin{document}
@@ -78,10 +70,10 @@
 
 \tableofcontents
 
-\chapter{Introduction to Homotopy Type Theory: Syntax and Axioms}
-\chapterauthor{Theofanis Chatzidiamantis-Christoforidis}
+\begin{abstract}
+    This is the first in a series of talks aiming to motivate and introduce the ideas behind homotopy type theory (HoTT) and higher category theory, and finally to bring the two together using the extension of HoTT commonly called simplicial type theory. We assume some prior exposure to formalized mathematics and a basic understanding of type theory (the intuition one gains from using Lean should be enough), as well as basic category theory.
+\end{abstract}
 
-This is the first in a series of talks aiming to motivate and introduce the ideas behind homotopy type theory (HoTT) and higher category theory, and finally to bring the two together using the extension of HoTT commonly called simplicial type theory. We assume some prior exposure to formalized mathematics and a basic understanding of type theory (the intuition one gains from using Lean should be enough), as well as basic category theory.
 
 \section{A Vague Introduction to (a) Type Theory}
 
@@ -333,10 +325,6 @@ The idea behind higher inductive types is that we use the structure of identity 
 \section{Truncations and Logical Aspects}
 \todo[inline]{Propositions, sets, ``universal property" of the propositional truncation. Infinite level of truncations, related to homotopy theory.  Note that types like isSet and isEquiv are propositions. AC and LEM related to truncation levels.  Univalence contradicts UIP.}
 \todo[inline]{UP of prop. truncation: $A$ type, $f:A\to P$, $P$ proposition s.t. for any other proposition $Q$ the precomposition map (w/$f$) is an equivalence of the function types.}
-
-\chapter{Categorical Semantics of Type Theory}
-\chapterauthor{Kunhong Du}
-
 
 \begin{thebibliography}{}
     \bibitem[UF13]{UF13}{The Univalent Foundations Program, \href{https://hott.github.io/book/hott-online-13-g2e736d1.pdf}{Homotopy type theory: Univalent foundations of mathematics}.  Institute for Advanced Study, 2013.}
