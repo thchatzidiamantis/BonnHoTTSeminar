@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{hofmann1998groupoid}
+Martin Hofmann and Thomas Streicher.
+\newblock The groupoid interpretation of type theory.
+\newblock {\em Twenty-five years of constructive type theory (Venice, 1995)},
+  36:83--111, 1998.
+
+\bibitem{kapulkin2021simplicial}
+Krzysztof Kapulkin and Peter~LeFanu Lumsdaine.
+\newblock The simplicial model of univalent foundations (after voevodsky).
+\newblock {\em Journal of the European Mathematical Society}, 23(6):2071--2126,
+  2021.
+
+\end{thebibliography}

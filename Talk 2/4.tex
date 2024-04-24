@@ -1,0 +1,73 @@
+\section{Problems of the naîve model}
+
+\subsection{Coherence}
+Type-theoretically substitution is a strictly functorial operation, whereas its categorical counterpart, pullback, without making any choices, is functorial only up to isomorphism.
+
+Consider $$\vdash a :A \quad x: A\vdash b:B \quad x:A,y:B\vdash T \type.$$ Then we can do substitution twice and obtain $$\vdash (T[b/y])[a/x] \type.$$ This process has semantics as performing pullback twice:
+
+\[\begin{tikzcd}
+	{(T[b/y])[a/x]} & {T[b/y]} & T \\
+	1 & A & B
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{a}", from=2-1, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{b}", from=2-2, to=2-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=1]
+\end{tikzcd}\]
+
+On the other hand, we have, syntatically, $$(T[b/y])[a/x] = (T[a/x])[(b[a/x])/y].$$
+And the right formula has semantics:
+
+\[\begin{tikzcd}
+	{(T[a/x])[(b[a/x])/y]} & {T[a/x]} & T \\
+	1 & {B[a/x]} & B \\
+	& 1 & A
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{b[a/x]}", from=2-1, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=3-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{a}", from=3-2, to=3-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=2]
+\end{tikzcd}\]
+
+One can show that the resulting maps are isomorphic but not neccessarily equal if the pullbacks are chosen arbitrarily.
+
+One possible solution is to make pullbacks a definite data of a category. (For example, a category with attributes.) In this way, making substitution is no longer arbitrary but under control.
+
+\subsection{Intensional vs. extensional}
+A type theory with $\Id$-type is said to be extensional if the \textit{reflection} rule is derivable:
+\begin{center}
+    \AxiomC{%$\Gamma\vdash a : A$ \quad $\Gamma\vdash b: A$ \quad 
+    $\Gamma \vdash p : \Id_A(a,b)$}
+    \RightLabel{$\Id$-\scriptsize{REFL}}
+    \UnaryInfC{$\Gamma\vdash a \equiv b : A$}
+    \DisplayProof
+\end{center}
+
+The interpretation above does validate $\Id$-{\scriptsize{REFL}} because 
+%is sound, then the type theory is extensional, simply because 
+%the following equalizer admits a section iff $a=b$ as morphisms:
+if the following equalizer admits a section, then $a=b$.
+$$\begin{tikzcd}
+    {\Id_A(a,b)} & {\Gamma} & {\Gamma.A}
+    \arrow["{\text{equalizer}}", from=1-1, to=1-2]
+    \arrow["b"', shift right, from=1-2, to=1-3]
+    \arrow["a", shift left, from=1-2, to=1-3]
+\end{tikzcd}$$
+Hence $\Id$-{\scriptsize{REFL}} is indeed consistent with MLTT, but is it derivable? 
+%A crucial deficiency of extensional type theory is that type checking is not decidable. Then is this rule derivable in MLTT? 
+The question is answered negetively by a counter model given Hofmann and Streicher \cite{hofmann1998groupoid}.
+
+\subsection{Universe and univalence}
+Don't forget the axiom making the HoTT distinguished. It's a fact that it is consistent with MLTT \cite{kapulkin2021simplicial} but constructing a model is way more complicate and will be left for my further talks.
