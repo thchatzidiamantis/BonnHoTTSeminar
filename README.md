@@ -4,4 +4,4 @@
 
 ## Talks so far:
 1. Theofanis Chatzidiamantis - Introduction to Homotopy Type Theory
-2. Kunhong Du - Categorical Semantics of Type Theory 
+2. Kunhong Du - [Categorical Semantics of Type Theory](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%202/main.pdf) 
