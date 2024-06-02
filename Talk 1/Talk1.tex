@@ -103,7 +103,6 @@ In HoTT, we present things in a different way, having infinite \textit{universes
     For these talks, we diverge from the notation used by functional programming languages and we do not follow the CIC presentation. Instead, we use a more ``natural" system, as outlined in \cite{UF13} and \cite{Rij22}. The exact details of the formal CIC system can be found in the \href{https://coq.inria.fr/doc/v8.9/refman/language/cic.html#}{Coq} and \href{https://lean-lang.org/theorem_proving_in_lean4/dependent_type_theory.html}{Lean} documentation. In particular, there is a precise exposition of the additional \href{https://lean-lang.org/theorem_proving_in_lean4/axioms_and_computation.html}{axioms} one can use to work analogously to classical logic and set theory. 
 \end{rem}
 
-\todo[inline]{$\lambda$ notation for functions. Maybe an example of an inductive type.}
 
 \subsection*{The Syntax}
 
@@ -303,8 +302,7 @@ The motivation here comes from another observation about how we reason in some a
 
 \begin{thm}
     Univalence implies function extensionality and propositional extensionality.
-\end{thm}    \todo[inline]{In the extended notes: talk about the universal properties implied by funext.}
-
+\end{thm}   
 One very powerful result implied by univalence is the following type-theoretic analogue of the Grothendieck construction:
 
 \begin{thm}
@@ -321,10 +319,6 @@ Recall that we can see $A\to \mathcal{U}$ as the type of type families indexed b
 \subsection*{A Glimpse Into Higher Inductive Types}
 The idea behind higher inductive types is that we use the structure of identity types and manually add our own paths with some specified behavior to define new types with homotopically interesting properties. In topology, this reminds us of the way we form CW-complexes. Recall that, by CW-approximation, these are all we need when reasoning about homotopy types up to weak equivalence.
 \todo[inline]{Circle.}
-
-\section{Truncations and Logical Aspects}
-\todo[inline]{Propositions, sets, ``universal property" of the propositional truncation. Infinite level of truncations, related to homotopy theory.  Note that types like isSet and isEquiv are propositions. AC and LEM related to truncation levels.  Univalence contradicts UIP.}
-\todo[inline]{UP of prop. truncation: $A$ type, $f:A\to P$, $P$ proposition s.t. for any other proposition $Q$ the precomposition map (w/$f$) is an equivalence of the function types.}
 
 \begin{thebibliography}{}
     \bibitem[UF13]{UF13}{The Univalent Foundations Program, \href{https://hott.github.io/book/hott-online-13-g2e736d1.pdf}{Homotopy type theory: Univalent foundations of mathematics}.  Institute for Advanced Study, 2013.}
