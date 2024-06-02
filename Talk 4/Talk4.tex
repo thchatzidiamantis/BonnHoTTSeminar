@@ -192,6 +192,18 @@ We define its $0$-th level to be the \textbi{mapping space} $$\Map_{\sS}(Z,W)=(W
 \section{Spaces and Kan Complexes}
 
 \begin{defin}
+    Let $n\in\bN$.
+    \begin{enumerate}
+        \item We define the \textbi{boundary} of $\Delta^n$ to be the simplicial set $\partial\Delta^n$ with its set of $k$-simplices being the set of non-surjective maps $[k]\to[n]$.
+        \item For $0\leq i\leq n$, we define the $i$-th \textbi{horn} to be the simplicial set $\Lambda^n_i$ with its set of $k$-simplices being the set of maps $[k]\to[n]$ for which there exists a $j\ne i$ that is not contained in their image.
+    \end{enumerate}
+    We call the horns defined for $1<i<n-1$ the \textbi{inner horns}.
+\end{defin}
+In other words, the boundary is the union of all faces and the $i$-th horn is the union of all faces except the $i$-th one.
+
+\par Since the standard $n$-simplex contains all of the maps considered above, we have inclusions $$\Lambda^n_i\hookrightarrow\partial\Delta^n\hookrightarrow\Delta^n$$
+
+\begin{defin}
     \begin{enumerate}
         \item A map of simplicial sets $f:X\to Y$ is a (inner) \textbi{Kan fibration} if any commutative square of the form 
         \[\begin{tikzcd}
