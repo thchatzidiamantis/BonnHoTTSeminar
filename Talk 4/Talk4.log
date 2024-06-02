@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  2 JUN 2024 21:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  2 JUN 2024 21:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -762,6 +762,9 @@ Overfull \hbox (4.64464pt too wide) in paragraph at lines 362--363
  []
 
 [9] [10] (Talk4.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Talk4.out' has not changed.
 (rerunfilecheck)             Checksum: 74CCE24AF0FF6D29C998720BAC4693B4;767.
  ) 
