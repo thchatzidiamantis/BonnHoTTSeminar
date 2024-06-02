@@ -275,6 +275,29 @@ In both cases, for a reasonable definition, we want at least the following:
     \end{tikzcd}\]
 \end{defin}
 
+\begin{ex}
+    Just as the nerve of a groupoid is a Kan complex, the nerve of a category is a quasicategory.
+\end{ex}
+
+The set of objects of a quasicategory $X$ is just $X_0$. What about morphisms?
+
+\begin{cons}[Mapping space]
+    Let $x,y:\Delta^0\to X$ be objects in a quasicategory $X$. We define the mapping space $\hom_X(x,y)$ as the pullback 
+    \[\begin{tikzcd}
+        {\hom_X(x,y)} & {X_1} \\
+        {\Delta^0} & {X_0\times X_0}
+        \arrow[from=1-1, to=1-2]
+        \arrow["{(d_1, d_0)}", from=1-2, to=2-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow["{(x,y)}"', from=2-1, to=2-2]
+        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+    \end{tikzcd}\]
+\end{cons}
+
+We can prove that this is actually a Kan complex. 
+
+
+
 \begin{rem}[Constructing quasicategories]
     So far, we haven't actually given an example of a quasicategory with nontrivial homotopical structure. To create such an object would mean to not only provide objects and (infinite levels of) morphisms, but also show how all these coherence conditions are satisfied. For that reason, we have various results and constructions which we can apply to various cases. \\ 
     Most crucially, the ``topological spaces'' example from our motivation has not been made into a quasicategory yet! For that, we use the following fact: 
