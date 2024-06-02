@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  2 JUN 2024 22:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.24)  3 JUN 2024 00:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -719,64 +719,65 @@ Overfull \hbox (17.42958pt too wide) in paragraph at lines 151--151
 []\OT1/LinuxLibertineT-TLF/m/n/10 We will mainly be con-cerned with two spe-cial cases: The cat-e-gory $\OMS/cmsy/m/n/10 S [][]\OT1/cmr/m/n/10 = []([]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 S[]\OT1/cmr/m/n/10 )$
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 172.
-(C:\Users\Theofanis\AppData\Local\Programs\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd
+[4]
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 176.
+ (C:\Users\Theofanis\AppData\Local\Programs\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 172.
- [4] [5]
+(Font)              scaled to size 10.0pt on input line 176.
+ [5]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 226.
+(Font)              scaled to size 7.0pt on input line 230.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 226.
+(Font)              scaled to size 5.0pt on input line 230.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 7.0pt on input line 229.
+(Font)              scaled to size 7.0pt on input line 233.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 5.0pt on input line 229.
+(Font)              scaled to size 5.0pt on input line 233.
+ [6]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 256.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
+(hyperref)                removing `\infty' on input line 256.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\infty' on input line 252.
+(hyperref)                removing `math shift' on input line 256.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
-
-[6] [7]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 292.
+[7]
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 297.
  (C:\Users\Theofanis\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-Overfull \hbox (0.86412pt too wide) in paragraph at lines 300--301
+) [8]
+Overfull \hbox (0.86412pt too wide) in paragraph at lines 305--306
 []\OT1/LinuxLibertineT-TLF/m/it/10 The weak equiv-a-lences are the maps that are lev-el-wise weak equiv-a-lences in $\OMS/cmsy/m/n/10 S[]$\OT1/LinuxLibertineT-TLF/m/it/10 . 
  []
 
-[8] [9]
-Overfull \hbox (4.64464pt too wide) in paragraph at lines 374--375
+[9]
+Overfull \hbox (4.64464pt too wide) in paragraph at lines 379--380
 []\OT1/LinuxLibertineT-TLF/m/n/10 for any pair of ob-jects $\OML/cmm/m/it/10 x; y$ \OT1/LinuxLibertineT-TLF/m/n/10 in $\OML/cmm/m/it/10 V$\OT1/LinuxLibertineT-TLF/m/n/10 , the in-duced map $[][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! [][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 fx; fy\OT1/cmr/m/n/10 )$
  []
 
-[10] (Talk4.aux)
+[10] [11] (Talk4.aux)
 Package rerunfilecheck Info: File `Talk4.out' has not changed.
 (rerunfilecheck)             Checksum: 74CCE24AF0FF6D29C998720BAC4693B4;767.
  ) 
 Here is how much of TeX's memory you used:
- 26629 strings out of 478659
- 506812 string characters out of 2844024
- 800327 words of memory out of 3000000
+ 26631 strings out of 478659
+ 506833 string characters out of 2844024
+ 799325 words of memory out of 3000000
  44133 multiletter control sequences out of 15000+600000
  442418 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,15n,104p,3292b,1140s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Theofanis\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbm/dpi600\bbm10.pk>{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}<C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/Theofanis/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs7.pfb>
-Output written on Talk4.pdf (10 pages, 518103 bytes).
+Output written on Talk4.pdf (11 pages, 519571 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
+ 265 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

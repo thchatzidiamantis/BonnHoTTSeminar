@@ -161,6 +161,10 @@ We now introduce some notation for the representable functors in $\cS$.
     Let $n\in\bN$. The \textbi{standard $n$-simplex} $\Delta^n$ is the functor $\Hom(-,[n])$.
 \end{defin}
 
+\begin{ex}[Nerve of a Category]
+    Let us show how we can turn an ordinary category $\C$ into a simplicial set. Viewing $[n]$ as a poset category, define the nerve by setting $$N(\C)_k\coloneqq \Fun([k],\C)$$. The nerve construction is made into a functor (i.e., a simplicial set) by setting $$f:[k]\to [m]\mapsto -\circ f:N(\C)_m\to N(\C)_k$$ $0$-simplices of $N(\C)$ are just objects in $C$, and $k$-simplices are sequences of $k$ composable morphisms, toghether with all their compositions.
+\end{ex}
+
 Then, an immediate consequence of the Yoneda lemma is that there is a natural bijection $$\Hom_{\cS}(\Delta^n, X)\cong X_n$$ for every simplicial set X. We call a map $\Delta^n\to X$ (or, equivalently, an element of $X_n$) an $n$-\textit{simplex} of $X$. 
 
 \begin{ex}
@@ -287,7 +291,8 @@ In both cases, for a reasonable definition, we want at least the following:
 So, why should one not just stick to the simpler-seeming notion of a quasicateory?
 
 \begin{itemize}
-    \item[\textbf{Constructions}.] Notice that with quasicategories, we have not actually showed that basic constructions work as expected. For example, showing that the mapping spaces are actually spaces (i.e., Kan complexes) is quite involved. Providing more structure makes proving things easier. Furthermore, things get even more complicated when people need higher categories where even more levels of morphisms are not invertible.
+    \item[\textbf{Constructions}.] Notice that with quasicategories, we have not actually showed that basic constructions work as expected. For example, showing that the mapping spaces are actually spaces (i.e., Kan complexes) is quite involved. Providing more structure makes proving things easier. Furthermore, things get even more complicated when people need higher categories where even more levels of morphisms are not invertible. \par
+    When trying to work in other contexts, for example with simplicial objects in other categories, the concept of a quasicategory may not be accessible at all.  Segal spaces are really the primitive notion.
     \item[\textbf{Type theory}.] To create a theory of $(\infty,1)$-categories in type theory, we need to define, for a given type, some type of directed arrows between terms of that type. Trying to follow the definition of a quasicategory, this would mean that we have to allow more paths to exist in identity types! Such paths would not constitute a good theory of identifications anymore, as, for example, there would not necessarily exist maps $$(x=_Ay)\to (y=_Ax)$$ witnessing the symmetry of identity. 
     \par We thus need additional structure to represent such directed paths, structure that does not come from identity types. In particular, we will introduce a \textit{directed interval} $\mathbbm{2}$ working like the 1-simplex $\Delta^1$, with maps $\mathbbm{2}\to A$ representing directed paths in $A$. 
 \end{itemize}
@@ -396,7 +401,7 @@ We now reach our final problem: the Dwyer-Kan equialences we just defined are th
 
 Finally, we have a big result to bring everything together: Quasicategories and complete Segal spaces in some sense define the same homotopy theory.
 
-\begin{thm}[Non-precise statement of (dkjshfkdjsn)]
+\begin{thm}[Non-precise statement of Joyal-Tierney]
     There are Quillen equivalences between a model structure where the fibrant objects are quasicategories and a model structure where the fibrant objects are complete Segal spaces.
 \end{thm}
 
