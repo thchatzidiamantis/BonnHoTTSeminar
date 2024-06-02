@@ -4,4 +4,5 @@
 
 ## Talks so far:
 1. Theofanis Chatzidiamantis - Introduction to Homotopy Type Theory
-2. Kunhong Du - [Categorical Semantics of Type Theory](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%202/main.pdf) 
+2. Kunhong Du - [Categorical Semantics of Type Theory](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%202/main.pdf)
+3. Tim Lichtnau - [Synthetic Algebraic Geometry](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%203/Synthetic%20Algebraic%20Geometry.pdf)
