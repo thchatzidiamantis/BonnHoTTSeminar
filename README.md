@@ -9,3 +9,4 @@
 4. Theofanis Chatzidiamantis-Christoforidis - [Higher Categories for the HoTT-Headed Mathematician](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%204/Talk4.pdf)
 5. Kunhong Du - The term model of type theory and contextual categories
 6. Tim Lichtnau - [Synthetic Algebraic Geometry II](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%205/SAG_Part2.pdf)
+7. Theofanis Chatzidiamantis-Christoforidis - [Formalizing Higher Categories with Simplicial Type Theory](https://github.com/thchatzidiamantis/BonnHoTTSeminar/blob/main/Talk%204/Talk4.pdf)
